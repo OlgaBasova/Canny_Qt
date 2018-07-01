@@ -31,7 +31,7 @@ void MainWindow::ShowImage(QImage &imageObject, int numbOfViewImage)
     QPixmap image = QPixmap::fromImage(imageObject);
 
     int ConstViewImageWidth = ui->graphicsViewImage->width();
-    if (image.height() > ConstViewImageWidth - 2)
+    if (image.height() > ConstViewImageWidth)
     {
         image = image.scaled(ConstViewImageWidth, image.height()*ConstViewImageWidth/image.width());
     }
