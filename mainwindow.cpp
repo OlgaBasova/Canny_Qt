@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->spinBox_apertureSize->setMinimum(3);
     ui->spinBox_apertureSize->setSingleStep(2);
 
-    ui->horizontalScrollBar_Thr1->setMaximum(100);
-    ui->spinBox_Thr1->setMaximum(100);
+    ui->horizontalScrollBar_Thr1->setMaximum(200);
+    ui->spinBox_Thr1->setMaximum(200);
     ui->horizontalScrollBar_Thr2->setMaximum(ui->horizontalScrollBar_Thr1->maximum()*3);
     ui->spinBox_Thr2->setMaximum(ui->spinBox_Thr1->maximum()*3);
 }
@@ -30,10 +30,15 @@ void MainWindow::ShowImage(QImage &imageObject, int numbOfViewImage)
 {
     QPixmap image = QPixmap::fromImage(imageObject);
 
-    int ConstViewImageWidth = ui->graphicsViewImage->width();
-    if (image.height() > ConstViewImageWidth)
+    int viewWidth = ui->graphicsViewImage->width();
+    if (image.width() > viewWidth)
     {
-        image = image.scaled(ConstViewImageWidth, image.height()*ConstViewImageWidth/image.width());
+        image = image.scaled(viewWidth, image.height()*viewWidth/image.width());
+    }
+    int viewHeight = ui->graphicsViewImage->height();
+    if (image.height() > viewHeight)
+    {
+        image = image.scaled(image.width()*viewHeight/image.height(), viewHeight);
     }
 
     QGraphicsScene *scene = new QGraphicsScene(this);
