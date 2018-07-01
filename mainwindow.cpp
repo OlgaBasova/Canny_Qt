@@ -81,8 +81,8 @@ void MainWindow::NewCanny()
 void MainWindow::on_pushButtonOpenImage_clicked()
 {
     QString imagePath = QFileDialog::getOpenFileName(this, "Open Image", "");
-    imageMat = imread(imagePath.toStdString(), 3);
-    grayImageMat = imread(imagePath.toStdString(), 3);
+    imageMat = imread(imagePath.toStdString(), 1);
+    grayImageMat = imread(imagePath.toStdString(), 0);
     QImage  imageObject;
     imageObject.load(imagePath);
     ShowImage(imageObject, 0);
