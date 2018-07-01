@@ -72,7 +72,7 @@ void MainWindow::NewCanny()
     int threshold1 = ui->spinBox_Thr1->value();
     int threshold2 = ui->spinBox_Thr2->value();
     int apertureSize = ui->spinBox_apertureSize->value();
-    Canny(imageMat, imageMatCanny, threshold1, threshold2, apertureSize, false);
+    Canny(grayImageMat, imageMatCanny, threshold1, threshold2, apertureSize, false);
 
     QImage  imageObjectCanny = Mat2QImage(imageMatCanny);
     ShowImage(imageObjectCanny, 1);
@@ -82,6 +82,7 @@ void MainWindow::on_pushButtonOpenImage_clicked()
 {
     QString imagePath = QFileDialog::getOpenFileName(this, "Open Image", "");
     imageMat = imread(imagePath.toStdString(), 3);
+    grayImageMat = imread(imagePath.toStdString(), 3);
     QImage  imageObject;
     imageObject.load(imagePath);
     ShowImage(imageObject, 0);
