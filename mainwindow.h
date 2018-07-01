@@ -35,6 +35,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Mat imageMat;
+    Mat grayImageMat;
     Mat imageMatCanny;
 };
 
