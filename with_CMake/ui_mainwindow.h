@@ -9,20 +9,6 @@
 #ifndef UI_MAINWINDOW_H
 #define UI_MAINWINDOW_H
 
-//#include <QtCore/QVariant>
-//#include <QtWidgets/QAction>
-//#include <QtWidgets/QApplication>
-//#include <QtWidgets/QButtonGroup>
-//#include <QtWidgets/QGraphicsView>
-//#include <QtWidgets/QHeaderView>
-//#include <QtWidgets/QLabel>
-//#include <QtWidgets/QMainWindow>
-//#include <QtWidgets/QPushButton>
-//#include <QtWidgets/QScrollBar>
-//#include <QtWidgets/QSpinBox>
-//#include <QtWidgets/QStatusBar>
-//#include <QtWidgets/QWidget>
-
 #include <QVariant>
 #include <QAction>
 #include <QApplication>
