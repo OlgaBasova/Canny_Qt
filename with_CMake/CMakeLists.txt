@@ -26,7 +26,7 @@ find_package(Qt5Widgets REQUIRED)
 
 qt5_use_modules(${PROJECT_NAME} Widgets)
 
-find_package(OpenCV 3.4 REQUIRED PATHS "/home/number42/opencv-3.4.1")
+find_package(OpenCV 3.4 REQUIRED PATHS "/home/opencv-3.4.1")
 message(STATUS "OpenCV library status:")
 message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    libraries: ${OpenCV_LIBS}")
