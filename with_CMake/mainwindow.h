@@ -31,10 +31,13 @@ private slots:
     void on_spinBox_apertureSize_valueChanged(int arg1);
     void on_pushButtonSaveCannyImage_clicked();
 
+
 private:
     Ui::MainWindow *ui;
+    QImage  imageObject;
     Mat imageMat;
     Mat grayImageMat;
+    QImage  imageObjectCanny;
     Mat imageMatCanny;
 };
 
