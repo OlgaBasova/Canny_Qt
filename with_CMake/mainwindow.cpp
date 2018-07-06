@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <opencv2/imgcodecs.hpp>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,11 +10,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->label->setText("First threshold for the hysteresis procedure");
-    ui->label_2->setText("Second threshold for the hysteresis procedure");
-    ui->label_3->setText("Aperture size for the Sobel operator");
+    ui->label->setText("First threshold");
+    ui->label->setAlignment(Qt::AlignRight);
+    ui->label_2->setText("Second threshold");
+    ui->label_2->setAlignment(Qt::AlignRight);
+    ui->label_3->setText("Aperture size");
+    ui->label_3->setAlignment(Qt::AlignRight);
 
-    ui->spinBox_apertureSize->setMaximum(7);
+    ui->spinBox_apertureSize->setMaximum(5);
     ui->spinBox_apertureSize->setMinimum(3);
     ui->spinBox_apertureSize->setSingleStep(2);
 
@@ -50,6 +54,7 @@ void MainWindow::ShowImage(QImage &imageObject, int numbOfViewImage)
     {
     case 0:
         ui->graphicsViewImage->setScene(scene);
+        ui->graphicsViewImage->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
         break;
     case 1:
         ui->graphicsViewCannyImage->setScene(scene);
@@ -76,7 +81,7 @@ void MainWindow::NewCanny()
     int apertureSize = ui->spinBox_apertureSize->value();
     Canny(grayImageMat, imageMatCanny, threshold1, threshold2, apertureSize, false);
 
-    QImage  imageObjectCanny = Mat2QImage(imageMatCanny);
+    imageObjectCanny = Mat2QImage(imageMatCanny);
     ShowImage(imageObjectCanny, 1);
 }
 
@@ -86,7 +91,6 @@ void MainWindow::on_pushButtonOpenImage_clicked()
     String const s = imagePath.toStdString();
     imageMat = cv::imread(s, 1);
     grayImageMat = imread(imagePath.toStdString(), 0);
-    QImage  imageObject;
     imageObject.load(imagePath);
     ShowImage(imageObject, 0);
 }
