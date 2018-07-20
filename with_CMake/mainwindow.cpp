@@ -21,8 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->spinBox_apertureSize->setMinimum(3);
     ui->spinBox_apertureSize->setSingleStep(2);
 
-    ui->horizontalScrollBar_Thr1->setMaximum(200);
-    ui->spinBox_Thr1->setMaximum(200);
+    ui->horizontalScrollBar_Thr1->setMaximum(100);
+    ui->spinBox_Thr1->setMaximum(100);
     ui->horizontalScrollBar_Thr2->setMaximum(ui->horizontalScrollBar_Thr1->maximum()*3);
     ui->spinBox_Thr2->setMaximum(ui->spinBox_Thr1->maximum()*3);
 }
