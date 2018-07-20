@@ -109,5 +109,6 @@ void MainWindow::on_pushButtonSaveCannyImage_clicked()
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     ShowImage(imageObject, 0);
-    ShowImage(imageObjectCanny, 1);
+    if (!imageObjectCanny.isNull())
+        ShowImage(imageObjectCanny, 1);
 }
