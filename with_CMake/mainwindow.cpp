@@ -36,17 +36,6 @@ void MainWindow::ShowImage(QImage &imageObject, int numbOfViewImage)
 {
     QPixmap image = QPixmap::fromImage(imageObject);
 
-    int viewWidth = ui->graphicsViewImage->width();
-    if (image.width() > viewWidth)
-    {
-        image = image.scaled(viewWidth, image.height()*viewWidth/image.width());
-    }
-    int viewHeight = ui->graphicsViewImage->height();
-    if (image.height() > viewHeight)
-    {
-        image = image.scaled(image.width()*viewHeight/image.height(), viewHeight);
-    }
-
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->addPixmap(image);
     scene->setSceneRect(image.rect());
@@ -58,6 +47,7 @@ void MainWindow::ShowImage(QImage &imageObject, int numbOfViewImage)
         break;
     case 1:
         ui->graphicsViewCannyImage->setScene(scene);
+        ui->graphicsViewCannyImage->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
         break;
     }
 }
@@ -114,4 +104,10 @@ void MainWindow::on_pushButtonSaveCannyImage_clicked()
 {
     QString imagePath = QFileDialog::getSaveFileName(this, "Save Image");
     imwrite(imagePath.toStdString(), imageMatCanny);
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    ShowImage(imageObject, 0);
+    ShowImage(imageObjectCanny, 1);
 }
